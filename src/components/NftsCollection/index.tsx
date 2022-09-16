@@ -78,7 +78,7 @@ export default NftCollection;
 //PAGE went blank
 //error handling
 //remove unused items
-//code reudability
+//code revamp
 //responsiveness
 //verify if app is working
 //push
