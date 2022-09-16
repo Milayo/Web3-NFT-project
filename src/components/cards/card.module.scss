@@ -8,13 +8,22 @@
     padding: .2rem 1rem 1rem;
     color: black;
     display: flex;
+    flex-direction: column;
+    line-height: 140%;
+    max-width: 300px;
+}
+
+.flexDiv {
+    display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: .5rem;
 }
 
 .cardTitle {
     font-weight: 700;
     font-size: 1.2rem;
-    margin-bottom: .5rem;
+   
 }
 
 .cardBtn {
@@ -24,4 +33,10 @@
     cursor: pointer;
     padding: .5rem;
     font-family: "Inter";
+}
+
+.cardDescription {
+   width: 100%;
+    overflow-wrap: break-word;
+    line-height: 140%;
 }

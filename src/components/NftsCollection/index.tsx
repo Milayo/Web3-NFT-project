@@ -20,17 +20,24 @@ const NftCollection = () => {
   const NFTArray: Nft[] = [];
 
   const fetchNfts = async () => {
-    const userAddress: string = "0x18a40393569aA99a15C9Ac58e7BFfB67347fD50f";
+    const userAddress: any = address;
 
     const nfts = await alchemy.nft.getNftsForOwner(userAddress);
 
     const nftItems = nfts["ownedNfts"];
 
-    for (let item of nftItems) {
+    const filteredItems = nftItems.filter((item) => {
+      return (
+        item.contract.address ===
+          "0x1ed25648382c2e6da067313e5dacb4f138bc8b33" ||
+        item.contract.address === "0x3cd266509d127d0eac42f4474f57d0526804b44e"
+      );
+    });
+
+    for (let item of filteredItems) {
       const tokenId = item.tokenId;
       const nftAddress = item.contract.address;
       const response = await alchemy.nft.getNftMetadata(nftAddress, tokenId);
-
       NFTArray.push(response);
     }
     setNfts(NFTArray);
@@ -51,8 +58,8 @@ const NftCollection = () => {
         <button className={styles.filterBtn}>BuildSpace</button>
       </div>
       <div className={styles.nftCards}>
-        {Nfts?.map((item, index) => (
-          <NFTCard key={index} item={item} />
+        {Nfts?.map((item) => (
+          <NFTCard key={item.tokenId} item={item} />
         ))}
       </div>
     </div>
@@ -60,3 +67,19 @@ const NftCollection = () => {
 };
 
 export default NftCollection;
+
+//things to be done
+//loading state
+//no nfts displayed
+//type any
+//set height of collection page to avoid showing white
+//remove unused items
+//code reudability
+//buttons filter
+//hide and view details
+//responsiveness
+//remove test address
+//verify if app is working
+//push
+//deploy
+

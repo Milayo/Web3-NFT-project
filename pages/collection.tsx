@@ -15,9 +15,9 @@ const CollectionPage = () => {
   }, [isConnected]);
 
   return (
-    <>
+    <div>
       <NftCollection />
-    </>
+    </div>
   );
 };
 
