@@ -6,6 +6,8 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import { NftProvider } from "use-nft";
+import { ethers } from "ethers";
 import Layout from "../src/components/layout";
 
 const { chains, provider } = configureChains(
@@ -13,7 +15,7 @@ const { chains, provider } = configureChains(
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Seer App",
   chains,
 });
 
@@ -23,13 +25,26 @@ const wagmiClient = createClient({
   provider,
 });
 
+const network = "homestead";
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <NftProvider
+          fetcher={[
+            "ethers",
+            {
+              provider: ethers.getDefaultProvider(network, {
+                alchemy: process.env.ALCHEMY_ID,
+              }),
+            },
+          ]}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </NftProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );
