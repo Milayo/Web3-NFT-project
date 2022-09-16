@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import styles from "./nftcollection.module.scss";
 import NFTCard from "../cards";
+import Loader from "../loader";
 
 const config = {
   apiKey: process.env.ALCHEMY_ID,
@@ -14,13 +15,14 @@ const alchemy = new Alchemy(config);
 
 const NftCollection = () => {
   const [Nfts, setNfts] = useState<Nft[]>();
+  const [loading, setLoading] = useState(true);
 
   const { isConnected, address } = useAccount();
 
   const NFTArray: Nft[] = [];
 
   const fetchNfts = async () => {
-    const userAddress: any = address;
+    const userAddress: string = address || "";
 
     const nfts = await alchemy.nft.getNftsForOwner(userAddress);
 
@@ -41,6 +43,7 @@ const NftCollection = () => {
       NFTArray.push(response);
     }
     setNfts(NFTArray);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -52,16 +55,19 @@ const NftCollection = () => {
   return (
     <div className={styles.collectionpage}>
       <div className={styles.collectiontitle}>NFT Collections</div>
-      <div className={styles.filterBtns}>
-        <button className={styles.filterBtn}>All NFTs</button>
-        <button className={styles.filterBtn}>LearnWeb3DAO</button>
-        <button className={styles.filterBtn}>BuildSpace</button>
-      </div>
-      <div className={styles.nftCards}>
-        {Nfts?.map((item) => (
-          <NFTCard key={item.tokenId} item={item} />
-        ))}
-      </div>
+      {loading && <Loader />}
+      {loading === false && Nfts?.length === 0 ? (
+        <div className={styles.emptyNft}>
+          You have no Learnweb3DAO or Buildspace Nfts. Complete a course to get
+          one!
+        </div>
+      ) : (
+        <div className={styles.nftCards}>
+          {Nfts?.map((item) => (
+            <NFTCard key={item.tokenId} item={item} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -69,17 +75,17 @@ const NftCollection = () => {
 export default NftCollection;
 
 //things to be done
-//loading state
-//no nfts displayed
-//type any
-//set height of collection page to avoid showing white
+//PAGE went blank
+//error handling
 //remove unused items
 //code reudability
-//buttons filter
-//hide and view details
 //responsiveness
-//remove test address
 //verify if app is working
 //push
 //deploy
-
+// - Code readability
+// - Code reusability
+// - UI/UX
+// - Project structure
+// - Approach used to perform the desired tasks
+// - Alternatives that were considered and rejected for XYZ reasons
