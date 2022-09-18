@@ -8,7 +8,6 @@ type CardProps = {
 
 const NFTCard = ({ item }: CardProps) => {
   const [openDetails, setOpenDetails] = useState(false);
-  console.log(item);
   const { description, title, media } = item;
 
   const handleBtnClick = () => {

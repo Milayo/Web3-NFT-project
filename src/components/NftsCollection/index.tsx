@@ -22,28 +22,33 @@ const NftCollection = () => {
   const NFTArray: Nft[] = [];
 
   const fetchNfts = async () => {
-    const userAddress: string = address || "";
+    try {
+      const userAddress: string = address || "";
 
-    const nfts = await alchemy.nft.getNftsForOwner(userAddress);
+      const nfts = await alchemy.nft.getNftsForOwner(userAddress);
 
-    const nftItems = nfts["ownedNfts"];
+      const nftItems = nfts["ownedNfts"];
 
-    const filteredItems = nftItems.filter((item) => {
-      return (
-        item.contract.address ===
-          "0x1ed25648382c2e6da067313e5dacb4f138bc8b33" ||
-        item.contract.address === "0x3cd266509d127d0eac42f4474f57d0526804b44e"
-      );
-    });
+      const filteredItems = nftItems.filter((item) => {
+        return (
+          item.contract.address ===
+            "0x1ed25648382c2e6da067313e5dacb4f138bc8b33" ||
+          item.contract.address === "0x3cd266509d127d0eac42f4474f57d0526804b44e"
+        );
+      });
 
-    for (let item of filteredItems) {
-      const tokenId = item.tokenId;
-      const nftAddress = item.contract.address;
-      const response = await alchemy.nft.getNftMetadata(nftAddress, tokenId);
-      NFTArray.push(response);
+      for (let item of filteredItems) {
+        const tokenId = item.tokenId;
+        const nftAddress = item.contract.address;
+        const response = await alchemy.nft.getNftMetadata(nftAddress, tokenId);
+        NFTArray.push(response);
+      }
+      setNfts(NFTArray);
+      setLoading(false);
+    } catch (err: any) {
+      setLoading(false);
+      alert(err.message);
     }
-    setNfts(NFTArray);
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -73,18 +78,3 @@ const NftCollection = () => {
 };
 
 export default NftCollection;
-
-
-//error handling
-//remove unused items
-//code revamp
-//verify if app is working
-//push
-//deploy
-// - Code readability
-// - Code reusability
-// - UI/UX
-// - Project structure
-// - Approach used to perform the desired tasks
-// - Alternatives that were considered and rejected for XYZ reasons
-// wrong network
