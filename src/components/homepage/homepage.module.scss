@@ -1,10 +1,13 @@
 .homepage {
     display: flex;
     padding: 3rem 5rem;
-    min-height: 83.5vh;
-    background: #0B0B0F;
     color: white;
     font-family: 'Inter';
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        padding: 3rem;
+    }
 }
 
 .homepageContent {
@@ -13,12 +16,30 @@
     flex-direction: column;
     gap: 2rem;
     align-self: center;
+
+    @media screen and (max-width: 800px) {
+        width: 90%;
+
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        gap: 1rem;
+    }
 }
 
 .hometitle {
     font-weight: 900;
     font-size: 60px;
     line-height: 130%;
+
+    @media screen and (max-width: 600px) {
+        font-size: 45px;
+    }
+
+    @media screen and (max-width: 400px) {
+        font-size: 35px;
+    }
 }
 
 .subtitle {
@@ -26,6 +47,11 @@
     font-size: 16px;
     line-height: 150%;
     color: #898CA9;
+
+    @media screen and (max-width: 400px) {
+        font-size: 14px;
+    }
+
 }
 
 .homeimgs {
@@ -36,11 +62,27 @@
     row-gap: 2rem;
     width: 45%;
     justify-content: flex-end;
+
+    @media screen and (max-width: 800px) {
+        width: 90%;
+        justify-content: center;
+        margin-top: 5rem;
+        column-gap: 5rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 400px) {
+        margin-top: 3rem;
+    }
 }
 
 .homeimg {
     background: rgba(42, 53, 71, 0.3);
     border-radius: 20px;
+    height: 13rem;
 }
 
 .imgtitle {

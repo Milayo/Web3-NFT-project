@@ -4,12 +4,22 @@
     align-items: center;
     justify-content: space-between;
     background: #0B0B0F;
+
+    @media screen and (max-width: 600px) {
+        padding: 1.5rem 3rem;
+    }
+
+    @media screen and (max-width: 400px) {
+        padding: 1.5rem;
+    }
 }
 
 .logo {
     font-family: 'Lobster Two';
     font-size: 3rem;
     color: white;
-}
 
-.headerBtn {}
+    @media screen and (max-width: 350px) {
+        font-size: 2rem;
+    }
+}
