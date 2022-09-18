@@ -16,7 +16,7 @@ const NFTCard = ({ item }: CardProps) => {
   };
   return (
     <div className={styles.cardcontainer}>
-      <Image unoptimized src={media[0]?.gateway} width={300} height={200} />
+      <Image unoptimized src={media[0]?.gateway} width={300} height={250} />
       <div className={styles.cardContent}>
         <div className={styles.flexDiv}>
           <div className={styles.cardTitle}>{title}</div>

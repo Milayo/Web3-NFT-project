@@ -2,6 +2,14 @@
     color: white;
     font-family: 'Poppins';
     padding: 2rem 8rem;
+
+    @media screen and (max-width: 600px) {
+        padding: 2rem 4rem;
+    }
+
+    @media screen and (max-width: 400px) {
+        padding: 3rem;
+    }
 }
 
 .collectiontitle {
@@ -9,13 +17,19 @@
     font-size: 45px;
     line-height: 130%;
     color: grey;
+
+    @media screen and (max-width: 600px) {
+    font-size: 40px;
+    }
 }
 
 .nftCards {
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .emptyNft {

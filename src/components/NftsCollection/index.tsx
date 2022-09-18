@@ -24,7 +24,9 @@ const NftCollection = () => {
   const fetchNfts = async () => {
     const userAddress: string = address || "";
 
-    const nfts = await alchemy.nft.getNftsForOwner(userAddress);
+    const nfts = await alchemy.nft.getNftsForOwner(
+      "0x4A40Eb870DcF533D4dC097c3d87aaFE9f64490A1"
+    );
 
     const nftItems = nfts["ownedNfts"];
 
@@ -79,7 +81,6 @@ export default NftCollection;
 //error handling
 //remove unused items
 //code revamp
-//responsiveness
 //verify if app is working
 //push
 //deploy
@@ -89,3 +90,8 @@ export default NftCollection;
 // - Project structure
 // - Approach used to perform the desired tasks
 // - Alternatives that were considered and rejected for XYZ reasons
+
+
+// change adrress
+// empty NftCollection
+// wrong network
