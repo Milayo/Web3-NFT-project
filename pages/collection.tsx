@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import NftCollection from "../src/components/NftsCollection";
 
 const CollectionPage = () => {
-  const { isConnected, address } = useAccount();
+  const { isConnected} = useAccount();
   const router = useRouter();
 
   useEffect(() => {

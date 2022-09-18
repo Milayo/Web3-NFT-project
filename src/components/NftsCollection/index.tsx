@@ -74,8 +74,7 @@ const NftCollection = () => {
 
 export default NftCollection;
 
-//things to be done
-//PAGE went blank
+
 //error handling
 //remove unused items
 //code revamp
@@ -88,7 +87,4 @@ export default NftCollection;
 // - Project structure
 // - Approach used to perform the desired tasks
 // - Alternatives that were considered and rejected for XYZ reasons
-
-// change adrress
-// empty NftCollection
 // wrong network
